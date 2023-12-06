@@ -10,7 +10,7 @@ function BotCollection({ allBots, addBot }) {
         Collection of all bots
         {allBots.map((myBot) => {
           return (
-            <BotCard bot={myBot} handleAdd={addBot} />
+            <BotCard key={myBot.id} bot={myBot} handleAdd={addBot} />
           )
         })}
       </div>

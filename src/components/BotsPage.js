@@ -12,9 +12,12 @@ function BotsPage({ bots }) {
 
   // Function for adding bot to the bot army array
   function handleAddBot(botID) {
+
     const botDetails = bots.find((bot) => bot.id === botID)
-    const updatedBots = [...myBotArmy, botDetails]
-    setMyBotArmy(updatedBots)
+    if (!myBotArmy.includes(botDetails)) {
+      const updatedBots = [...myBotArmy, botDetails]
+      setMyBotArmy(updatedBots)
+    }
   }
 
   return (
