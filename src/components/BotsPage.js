@@ -8,11 +8,19 @@ function BotsPage({ bots }) {
 
   // State for bot army
   const [myBotArmy, setMyBotArmy] = useState([])
+  console.log(myBotArmy)
+
+  // Function for adding bot to the bot army array
+  function handleAddBot(botID) {
+    const botDetails = bots.find((bot) => bot.id === botID)
+    const updatedBots = [...myBotArmy, botDetails]
+    setMyBotArmy(updatedBots)
+  }
 
   return (
     <div>
       <YourBotArmy myBots={myBotArmy} />
-      <BotCollection allBots={bots} />
+      <BotCollection allBots={bots} addBot={handleAddBot} />
     </div>
   )
 }
