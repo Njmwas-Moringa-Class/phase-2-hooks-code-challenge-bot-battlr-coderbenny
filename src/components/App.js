@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BotsPage from "./BotsPage";
 
 function App() {
-  const [allBots, setAllBots] = useState()
-  console.log(allBots)
+  // State for all bots
+  const [allBots, setAllBots] = useState([])
 
-  useState(() => {
+  // UseEffect for fetching bots data
+  useEffect(() => {
     fetch("http://localhost:8002/bots")
       .then(response => response.json())
       .then(data => {
         setAllBots(data)
       })
-  })
-
+  }, [])
 
   return (
     <div className="App">
-      <BotsPage />
+      <BotsPage bots={allBots} />
     </div>
   );
 }

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
 
-function BotsPage() {
+function BotsPage({ bots }) {
   //start here with your code for step one
+
+
+  // State for bot army
+  const [myBotArmy, setMyBotArmy] = useState([])
 
   return (
     <div>
-      <YourBotArmy />
-      <BotCollection />
+      <YourBotArmy myBots={myBotArmy} />
+      <BotCollection allBots={bots} />
     </div>
   )
 }
