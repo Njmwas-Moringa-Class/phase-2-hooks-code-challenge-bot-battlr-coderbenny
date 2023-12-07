@@ -12,11 +12,18 @@ function App() {
       .then(data => {
         setAllBots(data)
       })
+      .catch((error) => console.log("An Error occurred", error))
   }, [])
+
+  // Function for deleting a bot from the main array
+  function deleteFromMain(remainBots) {
+    setAllBots(remainBots)
+  }
+
 
   return (
     <div className="App">
-      <BotsPage bots={allBots} />
+      <BotsPage bots={allBots} handleRemove={deleteFromMain} />
     </div>
   );
 }

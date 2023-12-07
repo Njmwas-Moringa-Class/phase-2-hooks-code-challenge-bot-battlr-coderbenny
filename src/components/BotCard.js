@@ -9,17 +9,15 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot, handleAdd }) {
+function BotCard({ bot, handleRemoveBot, handleAdd }) {
 
   // Function for handling when the bot is clicked
   function handleBotClick(botId) {
-    const botID = botId
-    handleAdd(botID)
+    handleAdd(botId)
   }
 
-  // Function for handling when delete button is clicked
-  function handleRemoveBot() {
-    console.log("You have removed me")
+  function handleRemove(botId) {
+    handleRemoveBot(botId)
   }
 
   return (
@@ -59,7 +57,7 @@ function BotCard({ bot, handleAdd }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={() => handleRemoveBot(bot.id)}
+                onClick={() => handleRemove(bot.id)}
               >
                 x
               </button>
