@@ -1,12 +1,12 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function YourBotArmy({ myBots, removeBot }) {
+function YourBotArmy({ totalBots, handleRemove }) {
   //your bot army code here...
 
-  function removeFromArmy(botId) {
-    const updatedArray = myBots.filter((myBot) => myBot.id !== botId)
-    removeBot(updatedArray)
+  // Function for removing bots from the army
+  function handleRemoveArmy(botId) {
+    handleRemove(botId)
   }
 
   return (
@@ -15,9 +15,9 @@ function YourBotArmy({ myBots, removeBot }) {
         <div className="row bot-army-row">
           {/*...and here...*/}
           Your Bot Army
-          {myBots.map((myBot) => {
+          {totalBots.map((myBot) => {
             return (
-              <BotCard key={myBot.id} bot={myBot} handleAdd={removeFromArmy} handleRemoveBot={removeFromArmy} />
+              <BotCard key={myBot.id} bot={myBot} handleAdd={() => handleRemoveArmy(myBot.id)} handleRemoveBot={() => handleRemoveArmy(myBot.id)} />
             )
           })}
         </div>

@@ -1,21 +1,24 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function BotCollection({ allBots, addBot }) {
+function BotCollection({ allBots, removeCollectionBot, addBot }) {
+
   // Your code here
+
+  // Function for removing bot from the main array
   function deletingBot(botId) {
-    const remainBots = allBots.filter((bot) => bot.id !== botId)
-    console.log(remainBots)
+    removeCollectionBot(botId)
   }
+
 
   return (
     <div className="ui four column grid">
       <div className="row">
         {/*...and here..*/}
         Collection of all bots
-        {allBots.map((myBot) => {
+        {allBots.map((oneBot) => {
           return (
-            <BotCard key={myBot.id} bot={myBot} handleAdd={addBot} handleRemoveBot={deletingBot} />
+            <BotCard key={oneBot.id} bot={oneBot} handleAdd={addBot} handleRemoveBot={deletingBot} />
           )
         })}
       </div>
